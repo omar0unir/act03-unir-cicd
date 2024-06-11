@@ -1,3 +1,10 @@
+import app
+from math import sqrt
+from math import log10
+
+class InvalidPermissions(Exception):
+    pass
+
 class Calculator:
     def add(self, x, y):
         self.check_types(x, y)
