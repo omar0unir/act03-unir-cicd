@@ -3,7 +3,7 @@
 build:
 	docker build -t calculator-app .
 	docker build -t calc-web ./web
-	rm -rf ./
+
 server:
 	docker run --rm --name apiserver --network-alias apiserver --env PYTHONPATH=/opt/calc --env FLASK_APP=app/api.py -p 5000:5000 -w /opt/calc calculator-app:latest flask run --host=0.0.0.0
 
