@@ -9,6 +9,7 @@ server:
 
 test-unit:
 	docker rm --force unit-tests || true
+	docker rm --force unit-tests2 || true
 	docker run --name unit-tests --env PYTHONPATH=/opt/calc -w /opt/calc calculator-app:latest pytest --cov --cov-report=xml:results/coverage.xml --cov-report=html:results/coverage --junit-xml=results/unit_result.xml -m unit || true
 	docker cp unit-tests:/opt/calc/results ./
 	docker run --name unit-tests2 --env PYTHONPATH=/opt/calc -w /opt/calc -v `pwd`:/opt/calc/ calculator-app:latest junit2html results/unit_result.xml results/unit_result.html
