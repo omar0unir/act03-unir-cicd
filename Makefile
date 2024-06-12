@@ -10,7 +10,7 @@ server:
 test-unit:
 	docker rm --force unit-tests || true
 	docker run --name unit-tests  --volume `pwd`:/opt/calc/results --env PYTHONPATH=/opt/calc -w /opt/calc calculator-app:latest pytest --cov --cov-report=xml:results/coverage.xml --cov-report=html:results/coverage --junit-xml=results/unit_result.xml -m unit || true
-	docker run --rm --volume `pwd`:/opt/calc/resutls --env PYTHONPATH=/opt/calc -w /opt/calc calculator-app:latest junit2html results/unit_result.xml results/unit_result.html
+	docker run --rm --volume `pwd`:/opt/calc/results --env PYTHONPATH=/opt/calc -w /opt/calc calculator-app:latest junit2html results/unit_result.xml results/unit_result.html
 	docker rm unit-tests || true
 
 test-api:
